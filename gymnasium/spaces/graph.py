@@ -82,6 +82,14 @@ class Graph(Space[GraphInstance]):
 
         self.node_space = node_space
         self.edge_space = edge_space
+        act_low = np.array([0], dtype=np.float32)
+        act_high = np.array([1], dtype=np.float32)
+
+        self.spaces = {
+            "node": self.node_space,
+            "edge_weight": self.edge_space,
+            "edge_index": Box(low=act_low, high=act_high, dtype=np.float32),
+        }
 
         super().__init__(None, None, seed)
 
